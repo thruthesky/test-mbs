@@ -71,21 +71,21 @@ export default function BlogView({ user }: BlogViewProps) {
 
     const handleDelete = async (postId: string) => {
         if (!confirm('Are you sure you want to delete this post?')) return
-    
+
         setIsDeleting(true)
         try {
             await deleteBlogPost(postId)
-            
+
             setPosts(prevPosts => prevPosts.filter(post => post.id !== postId))
-    
+
         } catch (error) {
             console.error('Delete error:', error)
         } finally {
             setIsDeleting(false)
         }
     }
-    
-    
+
+
 
     if (!user) {
         return <div>Redirecting to login...</div>
@@ -105,9 +105,9 @@ export default function BlogView({ user }: BlogViewProps) {
                 </div>
             </div>
             {isLoading ? (
-                <div className="text-center">Loading posts...</div>
+                <div className="text-center">Loading Blogs</div>
             ) : posts.length === 0 ? (
-                <div className="text-center">No posts found</div>
+                <div className="text-center">No Blogs found</div>
             ) : (
                 <>
                     <div className="space-y-6">
@@ -127,7 +127,17 @@ export default function BlogView({ user }: BlogViewProps) {
                                 </div>
                                 <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
                                 <p className="text-gray-600 mb-4">{post.content}</p>
-                                <time className="text-sm text-gray-400">{new Date(post.created_at).toLocaleDateString()}</time>
+                                <time className="text-sm text-gray-400">
+                                    {new Date(post.created_at).toLocaleString('en-US', {
+                                        year: 'numeric',
+                                        month: 'short',
+                                        day: '2-digit',
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                        second: '2-digit',
+                                        hour12: true,
+                                    })}
+                                </time>
                             </article>
                         ))}
                     </div>
