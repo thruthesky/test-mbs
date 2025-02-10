@@ -75,14 +75,16 @@ export default function BlogView({ user }: BlogViewProps) {
         setIsDeleting(true)
         try {
             await deleteBlogPost(postId)
-            router.push('/myblog') 
-            fetchPosts() 
+            
+            setPosts(prevPosts => prevPosts.filter(post => post.id !== postId))
+    
         } catch (error) {
             console.error('Delete error:', error)
         } finally {
             setIsDeleting(false)
         }
     }
+    
     
 
     if (!user) {
