@@ -11,7 +11,7 @@ export default async function LoginPage() {
   } = await supabase.auth.getUser();
 
   if (user) {
-    redirect('/myblog'); // Redirect to myblog if already logged in
+    redirect('/myblog'); 
   }
 
   return (
