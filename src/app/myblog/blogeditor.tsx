@@ -8,7 +8,6 @@ import { createBlogPost, updateBlogPost } from '@/app/actions/blog-actions'
 interface BlogEditorProps {
   post?: Post
 }
-export const runtime = 'edge'
 export default function BlogEditor({ post }: BlogEditorProps) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
