@@ -2,6 +2,7 @@
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 import BlogEditor from '@/app/myblog/blogeditor'
+export const runtime = 'edge';
 
 export default async function EditPostPage({
   params,

@@ -2,6 +2,7 @@ import { register } from '../actions/action';
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+export const runtime = 'edge';
 
 export default async function SignupPage() {
   const supabase = await createClient();
