@@ -1,4 +1,3 @@
-'use server'
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 import BlogEditor from '@/app/myblog/blogeditor'
